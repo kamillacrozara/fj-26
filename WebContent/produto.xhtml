@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	
+		<ui:composition template="/_template.xhtml">
+			<ui:define name="corpo">
+			
+			<h:form id="cadastroForm">
+
+			<h2>
+				<h:outputText value="Novo Produto"
+					rendered="#{empty produtoBean.produto.id}"/>
+				<h:outputText value="Editar Produto"
+					rendered="#{not empty produtoBean.produto.id}"/>
+			</h2>
+			
+			<fieldset>
+			<legend>Dados do Produto</legend>
+				  <h:panelGroup id="campos">
+					<h:outputLabel value="Nome:" for="nome"/>
+					<h:inputText id="nome" value="#{produtoBean.produto.nome}"/>
+					
+					<h:outputLabel value="Descrição:" for="descricao"/>
+					<h:inputTextarea id="descricao" value="#{produtoBean.produto.descricao}"/>
+					
+					<h:outputLabel value="Preço:" for="preco"/>
+					<h:inputText id="preco" value="#{produtoBean.produto.preco}"/>
+				  </h:panelGroup>
+					
+					<h:commandButton value="Gravar" action="#{produtoBean.grava}">
+						<f:ajax event="action" execute="@form" render=":cadastroForm"/> 
+					</h:commandButton>
+					<h:commandButton value="Cancelar" action="#{produtoBean.cancelar}">
+						<f:ajax event="action" render="@form"/> 
+					</h:commandButton>
+										
+			</fieldset>
+			
+			<h:panelGroup id="listaProdutos">
+				<h2>Listagem de Produtos</h2>
+				
+				<h:inputHidden value="#{produtoBean.produto.id}"/>
+				<h:dataTable value ="#{produtoBean.produtos}" var ="produto"
+					 			styleClass="dados" rowClasses="impar,par">
+							<h:column>
+								<f:facet name="header">Id</f:facet>
+								#{produto.id}
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">Nome</f:facet>
+								#{produto.nome}
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">Descrição</f:facet>
+								#{produto.descricao}
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">Preço</f:facet>
+								#{produto.preco}
+							</h:column>
+							
+							<h:column>
+								<h:commandLink action="#{produtoBean.remove(produto)}" value ="Remover">
+									<f:ajax render="@form"/>
+								</h:commandLink>
+								
+							</h:column>
+							<h:column>
+								<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{produto}"
+									target="#{produtoBean.produto}" />
+								<f:ajax  render=":cadastroForm"/>
+								</h:commandLink>
+							</h:column>
+							<f:facet name="footer">Total: #{produtoBean.total}</f:facet>	
+					</h:dataTable>	
+				</h:panelGroup>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
