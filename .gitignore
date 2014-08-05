@@ -1,2 +1,6 @@
 .class
-
+build/
+.settings
+.classpath
+.metadata
+.project
