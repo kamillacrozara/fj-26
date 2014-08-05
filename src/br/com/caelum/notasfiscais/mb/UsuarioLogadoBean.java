@@ -21,7 +21,6 @@ public class UsuarioLogadoBean implements Serializable{
 	
 	public void deslogar() {
 		this.usuario = null;
-		
 	}
 	
 	public Usuario getUsuario(){

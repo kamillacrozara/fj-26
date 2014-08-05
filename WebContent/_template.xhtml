@@ -17,23 +17,8 @@
 					<h:outputText value="Logado como: #{usuarioLogadoBean.usuario.login}"
 						rendered="#{usuarioLogadoBean.logado}"/>
 						
-					<h:outputText value="[Sair]" action="#{loginBean.logout}"
+					<h:commandLink value=" [Sair]" action="#{loginBean.logout}"
 						rendered="#{usuarioLogadoBean.logado}"/>
-						
-					<h2>
-					<h:outputText value="Novo Produto"
-						rendered="#{empty produtoBean.produto.id}"/>
-					<h:outputText value="Editar Produto"
-						rendered="#{not empty produtoBean.produto.id}"/>
-					</h2>
-					
-					
-					<h2>
-					<h:outputText value="Novo Produto"
-						rendered="#{empty produtoBean.produto.id}"/>
-					<h:outputText value="Editar Produto"
-						rendered="#{not empty produtoBean.produto.id}"/>
-					</h2>
 				</h:form>
 			</div>
 		</div>
