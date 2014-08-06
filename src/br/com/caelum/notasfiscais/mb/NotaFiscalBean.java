@@ -1,6 +1,5 @@
 package br.com.caelum.notasfiscais.mb;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.caelum.notasfiscais.dao.NotaFiscalDao;
@@ -21,6 +20,7 @@ public class NotaFiscalBean {
 	
 	@Inject
 	private NotaFiscalDao notaFiscalDao;
+	
 	@Inject
 	private ProdutoDao produtoDao;
 	

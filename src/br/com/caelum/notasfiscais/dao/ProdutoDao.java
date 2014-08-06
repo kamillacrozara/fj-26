@@ -16,18 +16,30 @@ public class ProdutoDao implements Serializable{
 	
 	@Inject
 	EntityManager manager;
-
+	
 	public void adiciona(Produto produto) {
 		manager.persist(produto);
 	}
 
 
 	public void remove(Produto produto) {
-		manager.persist(produto);;
+		EntityManager manager = new JPAUtil().getEntityManager();
+		manager.getTransaction().begin();
+
+		manager.remove(manager.merge(produto));
+
+		manager.getTransaction().commit();
+		manager.close();
 	}
 
 	public void atualiza(Produto produto) {
-		manager.persist(produto);
+		
+		manager.getTransaction().begin();
+
+		manager.merge(produto);
+		
+		manager.getTransaction().commit();
+		manager.close();
 	}
 
 	public List<Produto> buscaPorNome(String nome) {

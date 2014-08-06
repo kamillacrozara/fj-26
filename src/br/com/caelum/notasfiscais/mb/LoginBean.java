@@ -42,7 +42,7 @@ public class LoginBean implements Serializable{
 	
 	public String logout(){
 		usuarioLogado.deslogar();
-		return "login";
+		return "login?faces-redirect=true";
 	}
 	
 	public Usuario getUsuario() {
