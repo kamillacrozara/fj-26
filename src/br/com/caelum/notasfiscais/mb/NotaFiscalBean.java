@@ -1,4 +1,5 @@
 package br.com.caelum.notasfiscais.mb;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -7,9 +8,11 @@ import br.com.caelum.notasfiscais.dao.ProdutoDao;
 import br.com.caelum.notasfiscais.modelo.Item;
 import br.com.caelum.notasfiscais.modelo.NotaFiscal;
 import br.com.caelum.notasfiscais.modelo.Produto;
+import br.com.caelum.notasfiscais.tx.Transactional;
 
 @Named(value="nfb")
-@ViewScoped
+@RequestScoped
+@Transactional
 public class NotaFiscalBean {
 	
 	private Item item = new Item();
