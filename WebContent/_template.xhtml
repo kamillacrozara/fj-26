@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:h="http://java.sun.com/jsf/html"
+	   xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<title>Sistema de Notas Fiscais - UberDist</title>
 		<h:outputStylesheet library="css" name="style.css"/>
@@ -24,6 +25,18 @@
 		</div>
 		
 		<div id="conteudo">
+			<h:form rendered="#{usuarioLogadoBean.logado}">
+				<p:menubar>
+					<p:menuitem value="Produtos" url="produto.xhtml"/>
+					
+					<p:submenu label="Notas Fiscais">
+						<p:menuitem value="Cadastro" url="notafiscal.xhtml"/>
+						<p:menuitem value="Listagem" url="listanotas.xhtml"/>
+					</p:submenu>
+					
+					<p:menuitem value="Sair" action="#{loginBean.logout}"/>
+				</p:menubar>
+			</h:form>
 			<ui:insert name="corpo"/>
 		</div>
 		

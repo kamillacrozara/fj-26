@@ -12,7 +12,8 @@
 	 	
 		<h2>Listagem de Notas Fiscais</h2>
 		
-		<p:dataTable value="#{listaNotasFiscaisBean.notas}"  var="notaFiscal" paginator="true" rows="5">
+		<p:dataTable value="#{listaNotasFiscaisBean.dataModel}"  var="notaFiscal" 
+			paginator="true" rows="5" lazy="true">
 				
 				
 			<p:column headerText="Id">
